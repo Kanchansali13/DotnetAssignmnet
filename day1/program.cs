@@ -108,6 +108,9 @@ namespace Assignment1
             {
                 return empno;
             }
+            private set{
+                empno=value;
+            }
         }
 
         private decimal basic;
