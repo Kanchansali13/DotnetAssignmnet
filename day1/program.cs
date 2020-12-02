@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +36,23 @@ namespace Assignment1
             Console.WriteLine("************************************************");
             Console.ReadLine();
             Employee o4 = new Employee();
+            Console.WriteLine($"employee name is:{ o4.Name}");
+            Console.WriteLine($"employee number is:{o4.Empno}");
+            Console.WriteLine($"emplyee basic is:{o4.Basic}");
+            Console.WriteLine($"employee deptno is:{o4.Deptno}");
+            Console.WriteLine($"employee salary is:{o4.GetNetSalary()}");
+            Console.WriteLine("************************************************");
+            Console.ReadLine();
+
+
+            Console.WriteLine($"employee name is:{ o4.Name}");
+            Console.WriteLine($"employee number is:{o4.Empno}");
+            Console.WriteLine($"emplyee basic is:{o4.Basic}");
+            Console.WriteLine($"employee deptno is:{o4.Deptno}");
+            Console.WriteLine($"employee salary is:{o4.GetNetSalary()}");
+            Console.WriteLine("************************************************");
+            Console.ReadLine();
+
             Console.WriteLine($"employee name is:{ o3.Name}");
             Console.WriteLine($"employee number is:{o3.Empno}");
             Console.WriteLine($"emplyee basic is:{o3.Basic}");
@@ -43,41 +60,60 @@ namespace Assignment1
             Console.WriteLine($"employee salary is:{o3.GetNetSalary()}");
             Console.WriteLine("************************************************");
             Console.ReadLine();
+
+            Console.WriteLine($"employee name is:{ o2.Name}");
+            Console.WriteLine($"employee number is:{o2.Empno}");
+            Console.WriteLine($"emplyee basic is:{o2.Basic}");
+            Console.WriteLine($"employee deptno is:{o2.Deptno}");
+            Console.WriteLine($"employee salary is:{o2.GetNetSalary()}");
+            Console.WriteLine("************************************************");
+            Console.ReadLine();
+
+            Console.WriteLine($"employee name is:{ o1.Name}");
+            Console.WriteLine($"employee number is:{o1.Empno}");
+            Console.WriteLine($"emplyee basic is:{o1.Basic}");
+            Console.WriteLine($"employee deptno is:{o1.Deptno}");
+            Console.WriteLine($"employee salary is:{o1.GetNetSalary()}");
+            Console.WriteLine("************************************************");
+            Console.ReadLine();
+
+
         }
     }
     class Employee
     {
         public static int flag = 0;
         #region constructor
-        public Employee()
-        {
-            flag++;
-            empno = flag;
-        }
-        public Employee(string name,decimal basic,int empno)
+        //public Employee()
+        //{
+        //    flag++;
+        //    empno = flag;
+        //}
+        public Employee(string name="kanchan",decimal basic=10045,short deptno=13)
         {
             flag++;
             this.name = name;
             this.basic = basic;
             this.empno = flag;
+            this.deptno = deptno;
            
 
         }
-        public Employee(string name, decimal basic)
-        {
-            flag++;
-            this.name = name;
-            this.basic = basic;
-            this.empno = flag;
+        //public Employee(string name, decimal basic)
+        //{
+        //    flag++;
+        //    this.name = name;
+        //    this.basic = basic;
+        //    this.empno = flag;
             
-        }
-        public Employee(string name)
-        {
-            flag++;
-            this.name = name;
-            this.empno = flag;
+        //}
+        //public Employee(string name)
+        //{
+        //    flag++;
+        //    this.name = name;
+        //    this.empno = flag;
            
-        }
+        //}
         #endregion
         #region properties
         private string name;
@@ -108,9 +144,7 @@ namespace Assignment1
             {
                 return empno;
             }
-            private set{
-                empno=value;
-            }
+            private set { empno = value; }
         }
 
         private decimal basic;
