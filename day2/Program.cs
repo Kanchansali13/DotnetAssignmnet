@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Assignmnet2
 {
+   
     class Program
     {
         static void Main()
         {
-            Manager m = new Manager("kanchan",12,12345,"manager");
+            Manager m = new Manager("kanchan",12,2345,"manager");
             Console.WriteLine(m.EmpNo + " " + m.Name + " " + m.Deptno + " " + m.Basic + " " + m.Designation + " "+m.CalcNetSalary()); 
             Console.ReadLine();
-            GeneralManager gm = new GeneralManager("abc",13,4567,"generalmanager","xyz");
+            GeneralManager gm = new GeneralManager("abc",13,9567,"generalmanager","xyz");
             Console.WriteLine(gm.EmpNo + " " + gm.Name + " " + gm.Deptno + " " + gm.Basic + " " + gm.Designation +" " +gm.Perks+" "+ gm.CalcNetSalary());
             Console.ReadLine();
             CEO ce = new CEO("aaa",123,89075);
@@ -21,9 +22,12 @@ namespace Assignmnet2
             Console.ReadLine();
         }
     }
-
-    public abstract class Employee
+    public interface IDbFunctions
     {
+         decimal CalcNetSalary();
+    }
+    public abstract class Employee: IDbFunctions
+    { 
         public static int flag = 0;
         public Employee(string Name, short Deptno,decimal Basic)
         {
@@ -83,7 +87,7 @@ namespace Assignmnet2
                 return deptno;
             }
         }
-        //private decimal B;
+        protected decimal basic;
         public abstract decimal Basic
         {
             set; get;
@@ -94,7 +98,7 @@ namespace Assignmnet2
         #endregion
     }
 
-    public class Manager : Employee
+    public class Manager : Employee, IDbFunctions
     {
         #region properties
         private string designation;
@@ -117,7 +121,7 @@ namespace Assignmnet2
                 return designation;
             }
         }
-        private decimal basic;
+        private new decimal basic;
         public override decimal Basic
         {
             get
@@ -126,7 +130,14 @@ namespace Assignmnet2
             }
             set
             {
-                basic = value;
+                if(value<5000)
+                {
+                    basic = value;
+                }
+                else
+                {
+                    Console.WriteLine("basic is invalid");
+                }
             }
 
         }
@@ -144,7 +155,7 @@ namespace Assignmnet2
         }
     }
 
-    public class GeneralManager : Manager
+    public class GeneralManager : Manager, IDbFunctions
     {
         #region properties
         private string perks;
@@ -159,8 +170,8 @@ namespace Assignmnet2
                 return perks;
             }
         }
-        private decimal basic;
-        public override decimal Basic
+       private new decimal basic;
+        public override  decimal Basic
         {
             get
             {
@@ -168,7 +179,15 @@ namespace Assignmnet2
             }
             set
             {
-                basic = value;
+                if(value<10000)
+                {
+                    basic = value;
+                }
+                else
+                {
+                    Console.WriteLine("basic is invalid");
+                }
+                
             }
         }
         #endregion
@@ -182,7 +201,7 @@ namespace Assignmnet2
         }
     }
 
-    public class CEO : Employee
+    public class CEO : Employee, IDbFunctions
     {
         public CEO(string Name,short Deptno,decimal Basic):base(Name, Deptno, Basic)
         {
